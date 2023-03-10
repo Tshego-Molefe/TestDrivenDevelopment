@@ -1,5 +1,10 @@
 package za.ac.cput.domain;
 
+/**
+ * Tshegofatso Molefe
+ * 219001235
+ * 10 March 2023
+ */
 public class Employee {
     private int empNumber;
     private String firstName;
