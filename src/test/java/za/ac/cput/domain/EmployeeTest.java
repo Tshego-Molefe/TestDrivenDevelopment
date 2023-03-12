@@ -7,13 +7,17 @@
 package za.ac.cput.domain;
 import org.apache.commons.digester.annotations.rules.SetTop;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Timeout;
 import za.ac.cput.domain.Employee;
 import org.junit.jupiter.api.Test;
+
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTest {
     @Test
-    public void test(){
+    public void test() {
         Employee emp = new Employee(012356, "Name", "LName", 15750.00);
         System.out.println(emp);
         assertNotNull(emp);
@@ -36,22 +40,38 @@ class EmployeeTest {
     }
 
     // ii) Object Identity
+    @Test
+    public void testObjectID() {
+        Employee emp1 = new Employee(10225, "Name", "LName", 15750.00);
+        Employee emp2 = new Employee(10225, "Name", "LName", 15750.00);
+        assertNotSame(emp1, emp2);
+    }
 
     // iii) Failing Test
     @Test
     public void failTest() {
         Employee e = new Employee(15852, "", "Molefe", 15280.58);
-        System.out.println("Employee e should fail " + e);
+        System.out.println("This method should fail " + e);
         assertEquals(null, e);
     }
 
         // iv) Timeouts
+    @Timeout(value = 181, unit = TimeUnit.MILLISECONDS)
+    @Test
+    public void testTimeout(){
+        for (int i = 0; i < 3000; i++) {
+            System.out.println(i);
+        }
+    }
+
+
 
         // v) Disabling Test
     @Disabled
     @Test
     public void disableTest(){
-
+    Employee e = new Employee(21900, "Name", "Surname", 15750);
+        System.out.println(e.toString());
     }
 
 
