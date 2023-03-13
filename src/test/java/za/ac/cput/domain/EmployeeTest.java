@@ -25,18 +25,31 @@ class EmployeeTest {
 
     //i) Object Equality
     @Test
-    public void testAssert() {
-        int a = 10;
+    public void testNotEqual() {
+        Employee emp1 = new Employee(10225, "Name", "LName", 15750.00);
+        Employee emp2 = new Employee(10225, "Name", "LName", 15750.00);
+        assertNotEquals(emp1, emp2);
+
+
+        /*int a = 10;
         int b = 15;
         String s1 = "Name";
         String s2 = "Name";
         double d1 = 52658.00;
-        double d2 = 52658.00;
+        double d2 = 52658.00;*/
 
-        assertEquals(a, a);
+        /*assertEquals(a, a);
         assertNotEquals(a, b);
         assertSame(s2, s1);
-        assertEquals(d2, d1);
+        assertEquals(d2, d1);*/
+
+
+    }
+    @Test
+    public void testEquality(){
+        Employee e1 = new Employee(10225, "Name", "LName", 15750.00);
+        Employee e2 = e1;
+        assertEquals(e1, e2);
     }
 
     // ii) Object Identity
@@ -52,7 +65,7 @@ class EmployeeTest {
     public void failTest() {
         Employee e = new Employee(15852, "", "Molefe", 15280.58);
         System.out.println("This method should fail " + e);
-        assertEquals(null, e);
+        failTest();
     }
 
         // iv) Timeouts
@@ -63,7 +76,6 @@ class EmployeeTest {
             System.out.println(i);
         }
     }
-
 
 
         // v) Disabling Test
